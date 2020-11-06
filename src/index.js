@@ -3,13 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Client as Styletron} from 'styletron-engine-atomic';
+import {Provider as StyletronProvider} from 'styletron-react';
+import {LightTheme, BaseProvider, styled} from 'baseui';
+import {StatefulInput} from 'baseui/input';
 
+
+const engine = new Styletron();
+
+const Centered = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+});
+
+const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
+    <StyletronProvider value={engine}>
+    <BaseProvider theme={LightTheme}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    </BaseProvider>
+  </StyletronProvider>,
+  rootElement
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
