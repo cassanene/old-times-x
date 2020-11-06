@@ -8,6 +8,7 @@ import NavigationBar from "./NavigationBar";
 import Home from "./Home"
 import Game from "./PlayGame/GameMode"
 import Leaderboard from "./Leaderboard/LeaderboardPage"
+import UserPrompt from "./Modal"
 
 // if another page needs to be added make sure to add it before the "/" because it would be overriden and
 // show up
@@ -24,6 +25,9 @@ export default function Routes() {
           </Route>
           <Route path="/leaderboards">
             <Leaderboard />
+          </Route>
+          <Route path="/login">
+            <UserPrompt />
           </Route>
           <Route path="/">
             <NavigationBar />
