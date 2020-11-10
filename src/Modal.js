@@ -4,33 +4,38 @@ import {Button} from 'baseui/button';
 import {
   Modal,
   ModalHeader,
-  ModalBody,
-  ModalFooter,
   ModalButton,
-  SIZE,
 } from 'baseui/modal';
+import Routes from "./Route";
 
 function UserPrompt() {
     // this may not be the best method for right now but we can change it later
 
-    const [isOpen, setIsOpen] = React.useState(true);
+const [isOpen, setIsOpen] = React.useState(true);
     // setIsOpen(true);
-    function close() {
-        setIsOpen(false);
-        }
-  return (
+function close() {
+    setIsOpen(false);
+}
+
+function handleRoute() {
+    window.location = "/personalbests";
+    return(
+        <Routes />
+    )
+}
+return (
     <React.Fragment>
         <NavigationBar />
       <Modal isOpen={isOpen}>
-        {/* <ModalHeader>View Personal Best or Log out?</ModalHeader> */}
-        <ModalBody>View Personal Best or Log out?</ModalBody>
+        <ModalHeader>View Personal Best or Log out?</ModalHeader>
+        {/* <ModalBody>View Personal Best or Log out?</ModalBody> */}
           <ModalButton kind="tertiary" onClick={close}>
             Cancel
           </ModalButton>
           <ModalButton onClick={close}>
             Logout
           </ModalButton>
-          <ModalButton  onClick={close}>
+          <ModalButton  onClick={handleRoute}>
             Personal Best
           </ModalButton>
       </Modal>
