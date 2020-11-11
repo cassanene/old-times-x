@@ -9,8 +9,8 @@ import Home from "./Home";
 import Game from "./PlayGame/GameMode";
 import Leaderboard from "./Leaderboard/LeaderboardPage";
 import PersonalBest from "./PersonalBest";
-import SingleSet from "./PlayGame/SinglePlayer";
-import MultiplayerChoice from "./PlayGame/Multiplayer";
+import Play from "./PlayGame/Play";
+import MultiplayerChoice from "./PlayGame/Multiplayer/Multiplayer";
 
 // if another page needs to be added make sure to add it before the "/" because it would be overriden and
 // show up
@@ -29,7 +29,7 @@ export default function Routes() {
             <Game />
           </Route>
           <Route path="/singleplayer/play">
-            <SingleSet />
+            <Play />
           </Route>
           <Route path="/leaderboards">
             <Leaderboard />
