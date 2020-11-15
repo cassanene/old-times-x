@@ -19,9 +19,6 @@ export default function Routes() {
     return (
         <Router>
         <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
           <Route path="/playgame/multiplayer">
             <MultiplayerChoice />
           </Route>
@@ -37,9 +34,9 @@ export default function Routes() {
           <Route path="/personalbests">
             <PersonalBest />
           </Route>
-          {/* <Route path="/">
-            <NavigationBar />
-          </Route> */}
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
         </Router>
     );
