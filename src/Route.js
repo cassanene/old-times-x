@@ -19,7 +19,7 @@ export default function Routes() {
     return (
         <Router>
         <Switch>
-          <Route path="/home">
+          <Route path="/">
             <Home />
           </Route>
           <Route path="/playgame/multiplayer">
@@ -37,9 +37,9 @@ export default function Routes() {
           <Route path="/personalbests">
             <PersonalBest />
           </Route>
-          <Route path="/">
+          {/* <Route path="/">
             <NavigationBar />
-          </Route>
+          </Route> */}
         </Switch>
         </Router>
     );
