@@ -9,7 +9,7 @@ function NavigationBar(){
   const [modalOpen, setOpen] = React.useState(false);
   const [mainItems, setMainItems] = React.useState([
     {label: 'Home', info: {id: "/home"}},
-    {label: 'Play Game', info: {id: "/playgame"}},
+    {label: 'Play Game', info: {id: "/game"}},
     {label: 'Leaderboard', info: {id: "/leaderboards"}},
     {label: 'Login', info: {id: "login"}},
   ]);

@@ -19,10 +19,10 @@ export default function Routes() {
     return (
         <Router>
         <Switch>
-          <Route path="/playgame/multiplayer">
+          <Route path="/multiplayer">
             <MultiplayerChoice />
           </Route>
-          <Route path="/playgame">
+          <Route path="/game">
             <Game />
           </Route>
           <Route path="/singleplayer/play">
