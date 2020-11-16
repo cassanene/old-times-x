@@ -1,10 +1,11 @@
 import * as React from "react";
+import firebase from "firebase";
 import {
     AppNavBar,
     setItemActive
   } from "baseui/app-nav-bar";
 import UserPrompt from "./Modal";
-
+ 
 function NavigationBar(){
   const [modalOpen, setOpen] = React.useState(false);
   const [mainItems, setMainItems] = React.useState([
@@ -13,7 +14,7 @@ function NavigationBar(){
     {label: 'Leaderboard', info: {id: "/leaderboards"}},
     {label: 'Login', info: {id: "login"}},
   ]);
-
+ 
   // google login in here
   function getUniqueIdentifier(item) {
   if (item.info) {
@@ -27,9 +28,22 @@ function NavigationBar(){
       setItemActive(prev, item, getUniqueIdentifier),
   );
  
-  item.info.id == "login" ? setOpen(true) : window.location = item.info.id;
-
-
+  //window.location = item.info.id;
+  item.info.id == "login" ? login() : window.location = item.info.id;
+ 
+ 
+  }
+ 
+  function login(){
+    var provider = new firebase.auth.GoogleAuthProvider(); 
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      console.log(result.user);
+      //setUser(result.user);
+    }).catch(function(error) {
+      console.log(error);
+   });
+  
+ 
   }
   // this may be a terrible method right now but this is all that i could think of currently
   if (modalOpen === false){
@@ -47,5 +61,5 @@ function NavigationBar(){
     )
   }  
 }
-
+ 
 export default NavigationBar;

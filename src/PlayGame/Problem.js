@@ -9,9 +9,9 @@ function Problem (){
             overrides={{Root: {style: {width: '100px'}}}}
             title="2*2"
         >
-        {/* <StyledBody>
+        <StyledBody>
             2 * 2
-        </StyledBody>   */}
+        </StyledBody>  
         <Input
             // value={value}
             // onChange={e => setValue(e.target.value)}
@@ -19,10 +19,7 @@ function Problem (){
             // clearOnEscape
             />
         </Card>
-
         </div>
-        
-
     )
 }
 export default Problem;
