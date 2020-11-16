@@ -83,6 +83,9 @@ export default function Play (){
             <Cell>
                 <Problem/>
             </Cell>
+            <Cell>
+                <Problem/>
+            </Cell>
             </Grid>
         {/* </Outer> */}
         <Button  > Submit Answers</Button>
