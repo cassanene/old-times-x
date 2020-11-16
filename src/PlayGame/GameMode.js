@@ -19,7 +19,7 @@ export default function Game (){
             <Button id="/singleplayer/play" onClick={(e) => handleClick(e)} >Single Player Game</Button>
         </Card>
         <Card>
-            <Button id="/playgame/multiplayer" onClick={(e) => handleClick(e)}>Mulitplayer Game</Button>
+            <Button id="/multiplayer" onClick={(e) => handleClick(e)}>Mulitplayer Game</Button>
         </Card>
      </div>
     );    
