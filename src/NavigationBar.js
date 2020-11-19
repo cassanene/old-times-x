@@ -1,65 +1,65 @@
 import * as React from "react";
 import firebase from "firebase";
 import {
-    AppNavBar,
-    setItemActive
-  } from "baseui/app-nav-bar";
+  AppNavBar,
+  setItemActive
+} from "baseui/app-nav-bar";
 import UserPrompt from "./Modal";
- 
-function NavigationBar(){
+
+function NavigationBar() {
   const [modalOpen, setOpen] = React.useState(false);
   const [mainItems, setMainItems] = React.useState([
-    {label: 'Home', info: {id: "/home"}},
-    {label: 'Play Game', info: {id: "/game"}},
-    {label: 'Leaderboard', info: {id: "/leaderboards"}},
-    {label: 'Login', info: {id: "login"}},
+    { label: 'Home', info: { id: "/home" } },
+    { label: 'Play Game', info: { id: "/game" } },
+    { label: 'Leaderboard', info: { id: "/leaderboards" } },
+    { label: 'Login', info: { id: "login" } },
   ]);
- 
+
   // google login in here
   function getUniqueIdentifier(item) {
-  if (item.info) {
+    if (item.info) {
       return item.info.id;
+    }
+    return item.label;
   }
-  return item.label;
-  }
-    
+
   function handleMainItemSelect(item) {
-  setMainItems(prev =>
+    setMainItems(prev =>
       setItemActive(prev, item, getUniqueIdentifier),
-  );
- 
-  //window.location = item.info.id;
-  item.info.id == "login" ? login() : window.location = item.info.id;
- 
- 
+    );
+
+    //window.location = item.info.id;
+    item.info.id == "login" ? login() : window.location = item.info.id;
+
+
   }
- 
-  function login(){
-    var provider = new firebase.auth.GoogleAuthProvider(); 
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+
+  function login() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log(result.user);
       //setUser(result.user);
-    }).catch(function(error) {
+    }).catch(function (error) {
       console.log(error);
-   });
-  
- 
+    });
+
+
   }
   // this may be a terrible method right now but this is all that i could think of currently
-  if (modalOpen === false){
+  if (modalOpen === false) {
     return (
       <AppNavBar
         title="Old Times X"
         mainItems={mainItems}
         onMainItemSelect={handleMainItemSelect}
       />
-      );
-  } 
-  else{
+    );
+  }
+  else {
     return (
       <UserPrompt />
     )
-  }  
+  }
 }
- 
+
 export default NavigationBar;
