@@ -67,26 +67,27 @@ export default function Play (){
     //         }
     // }
 
+    // populate grid
+    const cells = [];
+
+    for (let i = 0; i < 40; i++) {
+      cells.push(
+        <Cell>
+          <Problem />
+        </Cell>
+      );
+    }
+
     return(
         <div>
         <NavigationBar />
-        {/* <ProgressBar value={value} successValue={0} /> */}
-        {/* <GameProgressBar/> */}
-        {/* May not go here may go for the entire grid */}
-        {/* {calculateSeconds()} */}
         <StartPrompt start={[startTime,setStartTime]} />
-        {/* <Outer> */}
-        <Grid>
-            <Cell>
-                <Problem />
-            </Cell>
-            <Cell>
-                <Problem/>
-            </Cell>
-            </Grid>
-        {/* </Outer> */}
+
+        {/* render grid */}
+        <Grid col={2} colsSm={20}>
+          {cells}
+        </Grid>
         <Button  > Submit Answers</Button>
-        {/* onClick={handleSubmit} */}
         </div>
         
     )
