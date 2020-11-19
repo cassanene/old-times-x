@@ -82,13 +82,11 @@ export default function Play (){
         <div>
         <NavigationBar />
         <StartPrompt start={[startTime,setStartTime]} />
-
         {/* render grid */}
         <Grid col={2} colsSm={20}>
           {cells}
         </Grid>
         <Button  > Submit Answers</Button>
         </div>
-        
     )
 }
