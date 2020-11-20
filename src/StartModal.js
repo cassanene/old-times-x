@@ -16,13 +16,34 @@ function handleStart() {
   start[1](tempStartTime);
   console.log("time: ", start[0]);
 }
+
+function handleClick() {
+  // window.location = "/"
+}
 return (
     <React.Fragment>
-      <Modal isOpen={isOpen}>
+      <Modal 
+      closeable
+      animate
+      autoFocus
+      isOpen={isOpen}
+      overrides={{
+        Backdrop: {
+          style: ({ $theme }) => ({
+            // outline: `${$theme.colors.warning200} solid`,
+            backgroundColor: 'gray',
+            // backdrop-filter: blur(5px),
+          })
+        }
+      }}
+      >
         <ModalHeader>Ready to Start?</ModalHeader>
           <ModalButton onClick={handleStart}>
             Start
           </ModalButton>
+          {/* <ModalButton onClick={handleClick}>
+            Go back
+          </ModalButton> */}
       </Modal>
     </React.Fragment>
   );
