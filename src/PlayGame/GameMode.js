@@ -16,7 +16,10 @@ export default function Game (){
     <div>
         <NavigationBar />
         <Card>
-            <Button id="/singleplayer/play" onClick={(e) => handleClick(e)} >Single Player Game</Button>
+            <Button id="/singleplayer/playhard" onClick={(e) => handleClick(e)} >Single Player Game: Hard</Button>
+        </Card>
+        <Card>
+            <Button id="/singleplayer/playeasy" onClick={(e) => handleClick(e)} >Single Player Game: Easy</Button>
         </Card>
         <Card>
             <Button id="/multiplayer" onClick={(e) => handleClick(e)}>Mulitplayer Game</Button>
