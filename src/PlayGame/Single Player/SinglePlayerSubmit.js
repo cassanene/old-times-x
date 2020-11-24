@@ -10,7 +10,7 @@ import { Card } from "baseui/card";
 import Routes from "../../Route";
 
 export default function Scores() {
-    const header = 'Score Page';
+    const header = 'Completed!';
 
     function handleClick(e) {
         window.location = e.target.id;;

@@ -1,23 +1,22 @@
 import * as React from 'react';
 import {useState} from "react";
 import {Card, StyledBody} from "baseui/card";
-import { Input } from "baseui/input";
-
+import {Input,StyledRoot } from "baseui/input";
+import {withStyle} from 'baseui';
 function Problem ({problems}){
     const [value, setValue] = useState();
-    const [error, setError] = useState(true);
+    const [error, setError] = useState(false);
+    const [style, setStyle] = useState("");
+
     let num1 = problems[0];
     let num2 = problems[1];
 
     function checkValue(input){
         var regExp = /[a-zA-Z]/g;
         if (regExp.test(input)){
-            console.log("hello")
-            setError(true);
-            // authenticator for the letters in the input
-        }
 
-    }
+        }
+    }     
     return (
         <div>
         <Card
@@ -28,8 +27,15 @@ function Problem ({problems}){
         </StyledBody>  
         <Input
             value={value}
+            type="number"
             onChange={e => checkValue(e.target.value)}
-            // {...error}
+            // overrides={{
+            //         InputContainer: {
+            //             style: ({$theme, $setError, $disabled, $error}) => ({
+            //                 outline: $setError ? "black": "blue",
+            //             })
+            //         },
+            //     }}
             />
         </Card>
         </div>

@@ -23,16 +23,21 @@ function handleClick() {
 return (
     <React.Fragment>
       <Modal 
+      // onClose={() => setIsOpen(false)}
       closeable
       animate
       autoFocus
       isOpen={isOpen}
       overrides={{
         Backdrop: {
-          style: ({ $theme }) => ({
-            // outline: `${$theme.colors.warning200} solid`,
-            backgroundColor: 'gray',
-            // backdrop-filter: blur(5px),
+          style: ({$theme}) => ({
+            backgroundColor: "white",
+            opacity: `95%`,
+          })
+        },
+        Dialog: {
+          style: ({$theme}) => ({
+            backgroundColor: $theme.colors.backgroundPositive      
           })
         }
       }}
