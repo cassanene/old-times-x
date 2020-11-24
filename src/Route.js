@@ -10,6 +10,7 @@ import Game from "./PlayGame/GameMode";
 import Leaderboard from "./Leaderboard/LeaderboardPage";
 import PersonalBest from "./PersonalBest";
 import Play from "./PlayGame/Play";
+import PlayEasy from "./PlayGame/PlayEasy";
 import MultiplayerChoice from "./PlayGame/Multiplayer/Multiplayer";
 import Scores from "./PlayGame/Single Player/SinglePlayerSubmit";
 
@@ -29,8 +30,11 @@ export default function Routes() {
         <Route path="/scores">
           <Scores />
         </Route>
-        <Route path="/singleplayer/play">
+        <Route path="/singleplayer/playhard">
           <Play />
+        </Route>
+        <Route path="/singleplayer/playeasy">
+          <PlayEasy />
         </Route>
         <Route path="/leaderboards">
           <Leaderboard />
