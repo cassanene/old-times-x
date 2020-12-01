@@ -5,6 +5,10 @@ import { Button, SIZE, SHAPE } from "baseui/button"
 import { Table } from "baseui/table";
 import {
     Display1,
+    Paragraph1,
+    Paragraph2,
+    Paragraph3,
+    Paragraph4,
 } from 'baseui/typography';
 import { Card } from "baseui/card";
 import Routes from "../../Route";
@@ -34,12 +38,59 @@ export default function Scores() {
                         ],
                     ]}
                 />
+                <Paragraph1></Paragraph1>
+                <Table
+                    columns={["Problem", "Result"]}
+                    data={[
+                        [
+                            "2 x 2",
+                            "Correct"
+                        ],
+                        [
+                            "7 x 1",
+                            "Incorrect"
+                        ],
+                        [
+                            "4 x 5",
+                            "Correct"
+                        ],
+                        [
+                            "8 x 7",
+                            "Correct"
+                        ],
+                        [
+                            "0 x 3",
+                            "Incorrect"
+                        ],
+                        [
+                            "2 x 3",
+                            "Correct"
+                        ],
+                        [
+                            "4 x 1",
+                            "Correct"
+                        ],
+                        [
+                            "8 x 9",
+                            "Incorrect"
+                        ],
+                        [
+                            "5 x 2",
+                            "Correct"
+                        ],
+                        [
+                            "9 x 1",
+                            "Correct"
+                        ],
+                    ]}
+                />
                 <div>
+                    <Paragraph2></Paragraph2>
                     <Button id="/game" onClick={(e) => handleClick(e)}>Play Again</Button>
                     <Button id="/leaderboards" onClick={(e) => handleClick(e)}>Leaderboards</Button>
                 </div>
             </Card>
-        </div>
+        </div >
     );
 }
 
