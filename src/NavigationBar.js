@@ -1,11 +1,16 @@
 import * as React from "react";
 import {useState} from "react";
 import firebase from "firebase";
+import {firebaseApp} from "./firebase";
+import FirebaseData from "./test.firestore";
 import {
   AppNavBar,
   setItemActive
 } from "baseui/app-nav-bar";
 import UserPrompt from "./Modal";
+
+const app = firebaseApp;
+const db = firebase.firestore(app);
 
 function NavigationBar() {
   const [modalOpen, setOpen] = React.useState(false);
@@ -14,7 +19,7 @@ function NavigationBar() {
     { label: 'Home', info: { id: "/home" } },
     { label: 'Play Game', info: { id: "/game" } },
     { label: 'Leaderboard', info: { id: "/leaderboards" } },
-    { label: 'Login', info: { id: "login" } },
+    { label: user, info: { id: "login" } },
   ]);
 
   // google login in here
@@ -41,7 +46,28 @@ function NavigationBar() {
     firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log(result.user);
       console.log(result.user.displayName);
-      setUser("Bob"); // 
+      //setUser(result.user.displayName); 
+      console.log("This is user ", user);
+      db.collection("users").doc(result.user.uid).set({
+        uid : result.user.uid,
+        name : result.user.displayName,
+        email : result.user.email,
+    }).then(async function() {
+      //var id = result.user.uid;
+     // var newUser = db.collection("users").doc(result.user.uid);
+      //console.log(newUser);
+     // console.log("This is username " , newUser.name);
+     // setUser(newUser.name);
+      console.log("Document successfully written!");
+
+      var username = await FirebaseData(result.user.uid);
+      console.log("in navbar ", username);
+      setUser(username);
+  })
+  .catch(function(error) {
+      console.error("Error writing document: ", error);
+  })
+
     }).catch(function(error) {
       console.log(error);
    });
