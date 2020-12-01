@@ -34,6 +34,7 @@ export default function Scores() {
                         ],
                     ]}
                 />
+
                 <div>
                     <Button id="/singleplayer/play" onClick={(e) => handleClick(e)}>Play Again</Button>
                     <Button id="/leaderboards" onClick={(e) => handleClick(e)}>Leaderboards</Button>
