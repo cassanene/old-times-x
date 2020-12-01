@@ -12,7 +12,7 @@ import RandomProblems from "../Multiplication/RandomizeProblems";
 import {problemSolver} from "../Multiplication/ProblemSolver";
 
 
-let GRID_SIZE = 10;
+let GRID_SIZE = 25;
 
 export default function PlayEasy() {
   const [startTime, setStartTime] = React.useState(0);
