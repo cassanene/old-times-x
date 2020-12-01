@@ -12,7 +12,12 @@ import { problemSolver } from "../Multiplication/ProblemSolver";
 import { compareGrids } from "../Multiplication/CompareGrids";
 import { useParams } from "react-router";
 import GameOverPrompt from "../GameOverModal";
-
+import {
+  Paragraph1,
+  Paragraph2,
+  Paragraph3,
+  Paragraph4,
+} from 'baseui/typography';
 
 let GRID_SIZE;
 
@@ -63,18 +68,19 @@ export default function Play() {
   return (
     <div>
       <NavigationBar />
-      <StartPrompt start={[startTime, setStartTime]} started={[setStarted]}/>
+      <StartPrompt start={[startTime, setStartTime]} started={[setStarted]} />
       {finished && (
-          <GameOverPrompt />
+        <GameOverPrompt />
       )}
-      { started && 
+      { started &&
         (
-        <GameProgressBar finishedFunctions={[setFinished]}/>
+          <GameProgressBar finishedFunctions={[setFinished]} />
         )
       }
       <Grid col={2} colsSm={20}>
         {cells}
       </Grid>
+      <Paragraph2></Paragraph2>
       <Button onClick={handleClick} > Submit Answers</Button>
     </div>
   )
