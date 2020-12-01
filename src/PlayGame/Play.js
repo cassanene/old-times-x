@@ -8,11 +8,12 @@ import StartPrompt from "../StartModal";
 import GameProgressBar from "./ProgressBar";
 import Scores from "./Single Player/SinglePlayerSubmit";
 import Routes from "../Route";
-import RandomProblems from "../Multiplication/RandomizeProblems";
+import RandomProblemsHard from "../Multiplication/RandomizeProblemsHard";
 import {problemSolver} from "../Multiplication/ProblemSolver";
 
 
-let GRID_SIZE = 40;
+
+let GRID_SIZE = 50;
 
 export default function Play() {
   const [startTime, setStartTime] = React.useState(0);
@@ -36,7 +37,7 @@ export default function Play() {
       </div>
     );
   };
-
+  
 
   // function handleSubmit(){
   //   console.log("time again", startTime);
@@ -76,7 +77,7 @@ export default function Play() {
 
   // populate grid
   const cells = [];
-  let problems = RandomProblems(GRID_SIZE);
+  let problems = RandomProblemsHard(GRID_SIZE);
   console.log("answers in play", problemSolver(problems));
 
 

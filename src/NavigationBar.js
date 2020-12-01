@@ -41,12 +41,13 @@ function NavigationBar() {
     firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log(result.user);
       console.log(result.user.displayName);
-      setUser("Bob"); // 
+      setUser("Bob"); //
     }).catch(function(error) {
-      console.log(error);
+      console.log(error);  
    });
   
    
+
   }
   // this may be a terrible method right now but this is all that i could think of currently
   if (modalOpen === false) {
