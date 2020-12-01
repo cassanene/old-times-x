@@ -7,7 +7,6 @@ import {
 
 function StartPrompt({start}) {
     // this may not be the best method for right now but we can change it later
-
 const [isOpen, setIsOpen] = React.useState(true);
 
 function handleStart() {

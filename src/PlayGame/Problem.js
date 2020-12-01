@@ -3,7 +3,7 @@ import {useState} from "react";
 import {Card, StyledBody} from "baseui/card";
 import {Input,StyledRoot } from "baseui/input";
 import {withStyle} from 'baseui';
-function Problem ({problems}){
+function Problem ({problems, answers, cell}){
     const [value, setValue] = useState();
     const [error, setError] = useState(false);
     const [style, setStyle] = useState("");
@@ -16,6 +16,11 @@ function Problem ({problems}){
         if (regExp.test(input)){
 
         }
+        answers[0][cell] = input;
+        console.log("answers in problem", answers[0]);
+
+
+
     }     
     return (
         <div>
