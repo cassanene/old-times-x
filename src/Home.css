@@ -1,0 +1,14 @@
+img{
+    height: 250px;
+    width: 250px; 
+    padding: 10%;
+}
+
+table{
+    width: 100%
+}
+
+th{
+    font-size: 2em;
+    letter-spacing: 1px;
+}
