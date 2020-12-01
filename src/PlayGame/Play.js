@@ -2,18 +2,18 @@ import * as React from "react";
 import NavigationBar from '../NavigationBar';
 import { Button } from "baseui/button";
 import { Grid, Cell } from 'baseui/layout-grid';
-import { useStyletron} from 'baseui';
+import { useStyletron } from 'baseui';
 import Problem from "./Problem";
 import StartPrompt from "../StartModal";
 import GameProgressBar from "./ProgressBar";
 import Scores from "./Single Player/SinglePlayerSubmit";
 import Routes from "../Route";
 import RandomProblems from "../Multiplication/RandomizeProblems";
-import {problemSolver} from "../Multiplication/ProblemSolver";
-import {compareGrids} from "../Multiplication/CompareGrids";
+import { problemSolver } from "../Multiplication/ProblemSolver";
+import { compareGrids } from "../Multiplication/CompareGrids";
 import { useParams } from "react-router";
-import {Block} from 'baseui/block';
-import { Form, Field } from 'react-final-form';
+import { Block } from 'baseui/block';
+//import { Form, Field } from 'react-final-form';
 
 
 let GRID_SIZE;
@@ -31,17 +31,17 @@ export default function Play() {
 
 
   function Mode() {
-    let {mode} = useParams();
-    let i; 
+    let { mode } = useParams();
+    let i;
 
-    GRID_SIZE  = mode == "hard" ? 40 :  mode == "easy" ? 20 : 0;
+    GRID_SIZE = mode == "hard" ? 40 : mode == "easy" ? 20 : 0;
 
-    for (i = 1; i < GRID_SIZE; i++){
+    for (i = 1; i < GRID_SIZE; i++) {
       userAnswers[i.toString()] = null;
     }
 
     console.log(userAnswers);
-    
+
   }
   Mode();
   // calculateSeconds();
@@ -109,7 +109,7 @@ export default function Play() {
   for (let i = 0; i < GRID_SIZE; i++) {
     cells.push(
       <Cell>
-        <Problem problems={problems[i]} answers={[userAnswers, setAnswers]} cell={i}/>
+        <Problem problems={problems[i]} answers={[userAnswers, setAnswers]} cell={i} />
       </Cell>
     );
   }
@@ -117,7 +117,7 @@ export default function Play() {
   console.log("answers in play after", userAnswers);
 
   function handleClick() {
-    let correctness = compareGrids(userAnswers,problemAnswers, problems);
+    let correctness = compareGrids(userAnswers, problemAnswers, problems);
     console.log("correct", correctness);
     //compare the grids then put that information in the backend
     window.location = "/scores";
@@ -134,7 +134,7 @@ export default function Play() {
         {cells}
       </Grid>
       {/* </Block> */}
-      
+
       <Button onClick={handleClick} > Submit Answers</Button>
     </div>
   )
