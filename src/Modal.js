@@ -28,7 +28,6 @@ return (
         <NavigationBar />
       <Modal isOpen={isOpen}>
         <ModalHeader>View Personal Best or Log out?</ModalHeader>
-        {/* <ModalBody>View Personal Best or Log out?</ModalBody> */}
           <ModalButton kind="tertiary" onClick={close}>
             Cancel
           </ModalButton>

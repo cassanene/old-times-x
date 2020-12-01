@@ -5,12 +5,13 @@ import {
   ModalButton,
 } from 'baseui/modal';
 
-function StartPrompt({start}) {
+function StartPrompt({start, started}) {
     // this may not be the best method for right now but we can change it later
 const [isOpen, setIsOpen] = React.useState(true);
 
 function handleStart() {
   setIsOpen(false);
+  started[0](true);
   let tempStartTime = new Date();
   start[1](tempStartTime);
   console.log("time: ", start[0]);
