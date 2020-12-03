@@ -5,14 +5,12 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import NavigationBar from "./NavigationBar";
 import Home from "./Home";
 import Game from "./PlayGame/GameMode";
 import Leaderboard from "./Leaderboard/LeaderboardPage";
 import PersonalBest from "./PersonalBest";
 import Play from "./PlayGame/Play";
-import MultiplayerChoice from "./PlayGame/Multiplayer/Multiplayer";
-import Scores from "./PlayGame/Single Player/SinglePlayerSubmit";
+import Scores from "./PlayGame/Single Player/Scores";
 import Mode from "./PlayGame/Play";
 import {UserContext} from "./UserContext";
 
@@ -62,9 +60,6 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        {/* <Route path="/multiplayer">
-          <MultiplayerChoice /> */}
-        {/* </Route> */}
         <Route path="/game">
           <Game />
         </Route>

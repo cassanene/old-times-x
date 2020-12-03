@@ -18,7 +18,7 @@ function NavigationBar() {
   const userContext = React.useContext(UserContext);
   const [modalOpen, setOpen] = React.useState(false);
   const [user, setUser] = useState("Login");
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({name: userContext.name, uid: userContext.uid, email: userContext.email});
   const [logged, setLogged] = useState(false);
   const [mainItems, setMainItems] = React.useState([
     { label: "Home", info: { id: "/home"} },
@@ -27,9 +27,16 @@ function NavigationBar() {
     { label: "Login", info: { id: "login" } },
   ]);
 
+  useEffect(() =>{
+
+    console.log("userData in render", userData);
+
+  });
+
 
   // `${userData.uid}/game` 
   useEffect(() => {
+    
     console.log("the is logged", logged);
     console.log("main items", mainItems[3].label);
     console.log("this is main itmems", mainItems[3]);
@@ -39,7 +46,7 @@ function NavigationBar() {
     setMainItems(copy);
 
     console.log("copy of items", copy);
-    if (user != "Login"){
+    if (!(userContext.logged) && user != "Login"){
       setLogged(true);
       console.log("uid", userData)
       userContext.setName(userData.name);
