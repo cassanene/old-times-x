@@ -25,7 +25,7 @@ function Problem({ problems, answers, cell }) {
     return (
         <div>
             <Card
-                overrides={{ Root: { style: { width: '125%' } } }}
+                overrides={{ Root: { style: { width: '100px' } } }}
             >
                 <StyledBody>
                     {num1} X {num2}
