@@ -8,13 +8,8 @@ import {
 import Routes from "./Route";
 
 function GameOverPrompt() {
-    // this may not be the best method for right now but we can change it later
 
 const [isOpen, setIsOpen] = React.useState(true);
-    // setIsOpen(true);
-function close() {
-    setIsOpen(false);
-}
 
 function handleRoute() {
     window.location = "/scores";
@@ -28,16 +23,16 @@ return (
         isOpen={isOpen}
         overrides={{
             Backdrop: {
-            style: ({$theme}) => ({
+            style: () => ({
                 backgroundColor: "white",
                 opacity: `80%`,
             })
             },
-            // Dialog: {
-            // style: ({$theme}) => ({
-            //     backgroundColor: "5ad7fe",  
-            // })
-            // }
+            Dialog: {
+            style: () => ({
+                backgroundColor: "red",  
+            })
+            }
         }}
       >
         <ModalHeader>Game Over! Time's Up!</ModalHeader>
