@@ -80,7 +80,7 @@ export default function Play() {
       <Grid col={2} colsSm={20}>
         {cells}
       </Grid>
-      <Paragraph2></Paragraph2>
+      <Paragraph1></Paragraph1>
       <Button onClick={handleClick} > Submit Answers</Button>
     </div>
   )

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {useState} from "react";
-import {Card, StyledBody} from "baseui/card";
-import {Input,StyledRoot } from "baseui/input";
-import {withStyle} from 'baseui';
-function Problem ({problems, answers, cell}){
+import { useState } from "react";
+import { Card, StyledBody } from "baseui/card";
+import { Input, StyledRoot } from "baseui/input";
+import { withStyle } from 'baseui';
+function Problem({ problems, answers, cell }) {
     const [value, setValue] = useState();
     const [error, setError] = useState(false);
     const [style, setStyle] = useState("");
@@ -11,9 +11,9 @@ function Problem ({problems, answers, cell}){
     let num1 = problems[0];
     let num2 = problems[1];
 
-    function checkValue(input){
+    function checkValue(input) {
         var regExp = /[a-zA-Z]/g;
-        if (regExp.test(input)){
+        if (regExp.test(input)) {
 
         }
         answers[0][cell] = input;
@@ -21,28 +21,28 @@ function Problem ({problems, answers, cell}){
 
 
 
-    }     
+    }
     return (
         <div>
-        <Card
-            overrides={{Root: {style: {width: '100px'}}}}
-        >
-        <StyledBody>
-           {num1} X {num2}
-        </StyledBody>  
-        <Input
-            value={value}
-            type="number"
-            onChange={e => checkValue(e.target.value)}
-            // overrides={{
-            //         InputContainer: {
-            //             style: ({$theme, $setError, $disabled, $error}) => ({
-            //                 outline: $setError ? "black": "blue",
-            //             })
-            //         },
-            //     }}
-            />
-        </Card>
+            <Card
+                overrides={{ Root: { style: { width: '125%' } } }}
+            >
+                <StyledBody>
+                    {num1} X {num2}
+                </StyledBody>
+                <Input
+                    value={value}
+                    type="number"
+                    onChange={e => checkValue(e.target.value)}
+                // overrides={{
+                //         InputContainer: {
+                //             style: ({$theme, $setError, $disabled, $error}) => ({
+                //                 outline: $setError ? "black": "blue",
+                //             })
+                //         },
+                //     }}
+                />
+            </Card>
         </div>
     )
 }
