@@ -8,17 +8,16 @@ const db = firebase.firestore(app);
 
 async function FirebaseData(userID){
     // now async 
-    let username = null;
+    let userData = null;
     var docRef = db.collection("users").doc(userID);
 
     let user = await docRef.get().then(function(doc) { // .get returns a promise -> give it a function that doesnt execute right awat it doesnt execute right away
         // awaiting the promise , .then() chaining a promising onto it, executes our function, 
         if (doc.exists) {
             console.log("Document exist");
-            console.log(doc.data());
-            console.log(doc.data().name);
-            username = doc.data().name;
-           return username;
+            console.log("document .data", doc.data());
+            userData = doc.data();
+           return userData;
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");

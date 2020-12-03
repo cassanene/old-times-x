@@ -8,6 +8,7 @@ import {Client as Styletron} from 'styletron-engine-atomic';
 import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider, styled} from 'baseui';
 import {StatefulInput} from 'baseui/input';
+import {UserProvider} from "./UserContext";
 
 
 const engine = new Styletron();
@@ -23,7 +24,9 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
     <StyletronProvider value={engine}>
     <BaseProvider theme={LightTheme}>
-    <App />
+    <UserProvider> 
+      <App />
+    </UserProvider>
     </BaseProvider>
   </StyletronProvider>,
   rootElement

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import firebase from "firebase";
 import {firebaseApp} from "./firebase";
 import FirebaseData from "./test.firestore";
@@ -8,20 +8,47 @@ import {
   setItemActive
 } from "baseui/app-nav-bar";
 import UserPrompt from "./Modal";
+import {UserContext} from "./UserContext";
 
 const app = firebaseApp;
 const db = firebase.firestore(app);
 
 function NavigationBar() {
+
+  const userContext = React.useContext(UserContext);
   const [modalOpen, setOpen] = React.useState(false);
   const [user, setUser] = useState("Login");
+  const [userData, setUserData] = useState({});
+  const [logged, setLogged] = useState(false);
   const [mainItems, setMainItems] = React.useState([
-    { label: 'Home', info: { id: "/home" } },
-    { label: 'Play Game', info: { id: "/game" } },
+    { label: "Home", info: { id: "/home"} },
+    { label: 'Play Game', info: { id: "/game"} },
     { label: 'Leaderboard', info: { id: "/leaderboards" } },
-    { label: user, info: { id: "login" } },
+    { label: "Login", info: { id: "login" } },
   ]);
 
+
+  // `${userData.uid}/game` 
+  useEffect(() => {
+    console.log("the is logged", logged);
+    console.log("main items", mainItems[3].label);
+    console.log("this is main itmems", mainItems[3]);
+    /// slice the entire list without the login..
+    var copy = [...mainItems];
+    copy[3] = {label: user, info: {id: "login" }};
+    setMainItems(copy);
+
+    console.log("copy of items", copy);
+    if (user != "Login"){
+      setLogged(true);
+      console.log("uid", userData)
+      userContext.setName(userData.name);
+      userContext.setUID(userData.uid);
+      userContext.setEmail(userData.email);
+      userContext.setLogged(true);
+    }
+    
+  }, [user]);
   // google login in here
   function getUniqueIdentifier(item) {
     if (item.info) {
@@ -42,6 +69,7 @@ function NavigationBar() {
   }
 
   function login() {
+
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log(result.user);
@@ -53,16 +81,14 @@ function NavigationBar() {
         name : result.user.displayName,
         email : result.user.email,
     }).then(async function() {
-      //var id = result.user.uid;
-     // var newUser = db.collection("users").doc(result.user.uid);
-      //console.log(newUser);
-     // console.log("This is username " , newUser.name);
-     // setUser(newUser.name);
       console.log("Document successfully written!");
 
-      var username = await FirebaseData(result.user.uid);
-      console.log("in navbar ", username);
-      setUser(username);
+      var userInfo = await FirebaseData(result.user.uid);
+      console.log("name in navbar ", userInfo.name);
+      console.log("in navbar ", userInfo);
+      setUserData(userInfo);
+      setUser(userInfo.name);
+      console.log("user after set", user);
   })
   .catch(function(error) {
       console.error("Error writing document: ", error);
@@ -71,24 +97,35 @@ function NavigationBar() {
     }).catch(function(error) {
       console.log(error);
    });
-  
-   
+
   }
-  // this may be a terrible method right now but this is all that i could think of currently
-  if (modalOpen === false) {
+
     return (
-      <AppNavBar
+      <div> 
+      {
+        modalOpen && (
+          <UserPrompt />
+        )
+      }
+      {
+        !logged && (
+        <AppNavBar
         title="Old Times X"
         mainItems={mainItems}
         onMainItemSelect={handleMainItemSelect}
-      />
+      /> )
+      }
+      {
+        logged && (
+          <AppNavBar
+            title="Old Times X"
+            mainItems={mainItems}
+            onMainItemSelect={handleMainItemSelect}
+          />
+        )
+      }
+      </div>
     );
-  }
-  else {
-    return (
-      <UserPrompt />
-    )
-  }
 }
 
 export default NavigationBar;

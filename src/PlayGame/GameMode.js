@@ -6,6 +6,7 @@ import Routes from "../Route";
 import { Select, TYPE } from 'baseui/select';
 import { Notification, KIND } from "baseui/notification";
 import { H1 } from 'baseui/typography';
+import {UserContext} from "../UserContext";
 import './GameMode.css';
 import {
     Label1,
@@ -19,9 +20,19 @@ import {
 } from 'baseui/typography';
 
 export default function Game() {
+    const user = React.useContext(UserContext);
     const [value, setValue] = React.useState([""]);
     const [error, setError] = React.useState(false);
+    const [username, setUsername] = React.useState("");
 
+
+    React.useEffect(() => {
+        if (user.logged == "true"){
+            setUsername(user.name);
+        }
+      });
+
+    // const username = 
     const label = "Choose a game mode";
     const single = "Single Player Mode";
     const gameDescription = "There are two modes to the single player game: easy mode and hard mode. Easy mode has less problems and smaller multiplicands/multipliers. Hard mode has more problems and larger multiplicands/multipliers.";
@@ -51,6 +62,8 @@ export default function Game() {
                 )
             }
             <H1>{single}</H1>
+            <H1>{user.logged}</H1>
+            <H1>{user.name}</H1>
             <Paragraph1>{gameDescription}</Paragraph1>
             <Paragraph2>{gameDescription2}</Paragraph2>
             <Card>

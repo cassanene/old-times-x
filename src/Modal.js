@@ -1,6 +1,5 @@
 import * as React from 'react';
-import NavigationBar from './NavigationBar';
-import {Button} from 'baseui/button';
+import firebase from "firebase";
 import {
   Modal,
   ModalHeader,
@@ -17,6 +16,16 @@ function close() {
     setIsOpen(false);
 }
 
+function logout(){
+  console.log("in logout")
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error);
+  });
+}
+
 function handleRoute() {
     window.location = "/personalbests";
     return(
@@ -25,13 +34,12 @@ function handleRoute() {
 }
 return (
     <React.Fragment>
-        <NavigationBar />
       <Modal isOpen={isOpen}>
         <ModalHeader>View Personal Best or Log out?</ModalHeader>
           <ModalButton kind="tertiary" onClick={close}>
             Cancel
           </ModalButton>
-          <ModalButton onClick={close}>
+          <ModalButton onClick={logout}>
             Logout
           </ModalButton>
           <ModalButton  onClick={handleRoute}>

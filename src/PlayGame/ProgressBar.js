@@ -26,7 +26,7 @@ function useInterval(callback, delay) {
 export default function GameProgressBar ({finishedFunctions}){
 
   const [value, setValue] = React.useState(1);
-  const [color, setColor] = React.useState("blue");
+  const [color, setColor] = React.useState("green");
 
   useInterval(() => {
     if (value < MAX_SECONDS) {
