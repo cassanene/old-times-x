@@ -1,14 +1,12 @@
 import * as React from "react";
 import NavigationBar from '../../NavigationBar';
 
-import { Button, SIZE, SHAPE } from "baseui/button"
+import { Button} from "baseui/button"
 import { Table } from "baseui/table";
 import {
     Display1,
     Paragraph1,
     Paragraph2,
-    Paragraph3,
-    Paragraph4,
 } from 'baseui/typography';
 import { Card } from "baseui/card";
 import Routes from "../../Route";

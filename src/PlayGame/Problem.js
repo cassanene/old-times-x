@@ -17,7 +17,6 @@ function Problem({ problems, answers, cell }) {
 
         }
         answers[0][cell] = input;
-        console.log("answers in problem", answers[0]);
 
 
 

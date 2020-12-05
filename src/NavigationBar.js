@@ -9,13 +9,16 @@ import {
 } from "baseui/app-nav-bar";
 import UserPrompt from "./Modal";
 import {UserContext} from "./UserContext";
+import {Game} from "./PlayGame/GameMode"
 
 const app = firebaseApp;
 const db = firebase.firestore(app);
+// export const UserContext = createContext();
 
-function NavigationBar() {
+function NavigationBar(props) {
 
   const userContext = React.useContext(UserContext);
+
   const [modalOpen, setOpen] = React.useState(false);
   const [user, setUser] = useState("Login");
   const [userData, setUserData] = useState({name: userContext.name, uid: userContext.uid, email: userContext.email});
@@ -27,28 +30,15 @@ function NavigationBar() {
     { label: "Login", info: { id: "login" } },
   ]);
 
-  useEffect(() =>{
 
-    console.log("userData in render", userData);
-
-  });
-
-
-  // `${userData.uid}/game` 
   useEffect(() => {
-    
-    console.log("the is logged", logged);
-    console.log("main items", mainItems[3].label);
-    console.log("this is main itmems", mainItems[3]);
     /// slice the entire list without the login..
     var copy = [...mainItems];
     copy[3] = {label: user, info: {id: "login" }};
     setMainItems(copy);
 
-    console.log("copy of items", copy);
     if (!(userContext.logged) && user != "Login"){
       setLogged(true);
-      console.log("uid", userData)
       userContext.setName(userData.name);
       userContext.setUID(userData.uid);
       userContext.setEmail(userData.email);
@@ -69,33 +59,26 @@ function NavigationBar() {
       setItemActive(prev, item, getUniqueIdentifier),
   );
  
-  //window.location = item.info.id;
   user != "Login" && item.info.id == "login" ? setOpen(true) : item.info.id == "login" ? login() : window.location = item.info.id;
 
  
   }
 
   function login() {
-
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function (result) {
-      console.log(result.user);
-      console.log(result.user.displayName);
-      //setUser(result.user.displayName); 
-      console.log("This is user ", user);
       db.collection("users").doc(result.user.uid).set({
         uid : result.user.uid,
         name : result.user.displayName,
         email : result.user.email,
     }).then(async function() {
-      console.log("Document successfully written!");
-
       var userInfo = await FirebaseData(result.user.uid);
-      console.log("name in navbar ", userInfo.name);
-      console.log("in navbar ", userInfo);
       setUserData(userInfo);
       setUser(userInfo.name);
-      console.log("user after set", user);
+      userContext.setName(userData.name);
+      userContext.setUID(userData.uid);
+      userContext.setEmail(userData.email);
+      userContext.setLogged(true);
   })
   .catch(function(error) {
       console.error("Error writing document: ", error);

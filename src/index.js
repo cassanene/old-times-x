@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import {Client as Styletron} from 'styletron-engine-atomic';
 import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider, styled} from 'baseui';
-import {StatefulInput} from 'baseui/input';
 import {UserProvider} from "./UserContext";
 
 
@@ -20,8 +19,10 @@ const Centered = styled('div', {
   height: '100%',
 });
 
+
 const rootElement = document.getElementById("root");
 ReactDOM.render(
+
     <StyletronProvider value={engine}>
     <BaseProvider theme={LightTheme}>
     <UserProvider> 

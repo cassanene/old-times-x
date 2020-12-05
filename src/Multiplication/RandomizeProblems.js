@@ -2,7 +2,6 @@
 
 function RandomProblems(size){
     let problemsGrid = [];
-    // the max should change based on the size of the grid we can add that later
     let i;
     let RANGE;
     size == 20 ? RANGE = 11: RANGE = 21; 

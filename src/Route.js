@@ -12,50 +12,9 @@ import PersonalBest from "./PersonalBest";
 import Play from "./PlayGame/Play";
 import Scores from "./PlayGame/Single Player/Scores";
 import Mode from "./PlayGame/Play";
-import {UserContext} from "./UserContext";
 
-// if another page needs to be added make sure to add it before the "/" because it would be overriden and
-// show up
-
-
-
-function PrivateRoute({ component: Component, authenticated, ...rest}){
-  return (
-    // <Route />
-    <Route
-      {...rest}
-      render={props =>
-        authenticated === true ? (
-          <Component {...props} />
-        ) : (
-            <Redirect
-              to={{ pathname: "/home", state: { from: props.location } }}
-            />
-          )
-      }
-    />
-  )
-}
-
-function PublicRoute({ component: Component, authenticated, ...rest}) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        authenticated === false ? (
-          <Component {...props} />
-        ) : console.log("hello")
-        // (
-        //     <Redirect to="/home" />
-        //   )
-      }
-    />
-  );
-}
 
 export default function Routes() {
-
-  const user = React.useContext(UserContext);
 
   return (
     <Router>
@@ -80,5 +39,5 @@ export default function Routes() {
         </Route> 
       </Switch>
     </Router>
-  );
+  )
 }
