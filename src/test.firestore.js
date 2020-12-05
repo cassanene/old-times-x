@@ -14,8 +14,6 @@ async function FirebaseData(userID){
     let user = await docRef.get().then(function(doc) { // .get returns a promise -> give it a function that doesnt execute right awat it doesnt execute right away
         // awaiting the promise , .then() chaining a promising onto it, executes our function, 
         if (doc.exists) {
-            console.log("Document exist");
-            console.log("document .data", doc.data());
             userData = doc.data();
            return userData;
         } else {

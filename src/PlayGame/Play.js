@@ -36,16 +36,11 @@ export default function Play() {
       userAnswers[i.toString()] = null;
     }
 
-    console.log(userAnswers);
-
   }
   Mode();
   const cells = [];
   let problems = RandomProblems(GRID_SIZE);
-  let problemAnswers = problemSolver(problems)
-  console.log("answers in play", problemAnswers);
-
-
+  let problemAnswers = problemSolver(problems);
 
   for (let i = 0; i < GRID_SIZE; i++) {
     cells.push(
@@ -55,11 +50,8 @@ export default function Play() {
     );
   }
 
-  console.log("answers in play after", userAnswers);
-
   function handleClick() {
     let correctness = compareGrids(userAnswers, problemAnswers, problems);
-    console.log("correct", correctness);
     //compare the grids then put that information in the backend
     window.location = "/scores";
     return (<Routes />)

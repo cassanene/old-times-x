@@ -4,9 +4,9 @@ import {
   ModalHeader,
   ModalButton,
 } from 'baseui/modal';
+import Routes from "./Route";
 
 function StartPrompt({start, started}) {
-    // this may not be the best method for right now but we can change it later
 const [isOpen, setIsOpen] = React.useState(true);
 
 function handleStart() {
@@ -14,23 +14,25 @@ function handleStart() {
   started[0](true);
   let tempStartTime = new Date();
   start[1](tempStartTime);
-  console.log("time: ", start[0]);
 }
 
 function handleClick() {
-  // window.location = "/"
+  window.location = "/game";
+  return (
+    <Routes />
+)
+
 }
 return (
     <React.Fragment>
       <Modal 
-      // onClose={() => setIsOpen(false)}
       closeable
       animate
       autoFocus
       isOpen={isOpen}
       overrides={{
         Backdrop: {
-          style: ({$theme}) => ({
+          style: () => ({
             backgroundColor: "white",
             opacity: `95%`,
           })
@@ -46,9 +48,9 @@ return (
           <ModalButton onClick={handleStart}>
             Start
           </ModalButton>
-          {/* <ModalButton onClick={handleClick}>
+          <ModalButton onClick={handleClick}>
             Go back
-          </ModalButton> */}
+          </ModalButton>
       </Modal>
     </React.Fragment>
   );

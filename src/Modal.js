@@ -16,16 +16,6 @@ function close() {
     setIsOpen(false);
 }
 
-function logout(){
-  console.log("in logout")
-  firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-  }).catch(function(error) {
-    // An error happened.
-    console.log(error);
-  });
-}
-
 function handleRoute() {
     window.location = "/personalbests";
     return(
@@ -39,7 +29,7 @@ return (
           <ModalButton kind="tertiary" onClick={close}>
             Cancel
           </ModalButton>
-          <ModalButton onClick={logout}>
+          <ModalButton onClick={close}>
             Logout
           </ModalButton>
           <ModalButton  onClick={handleRoute}>

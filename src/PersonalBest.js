@@ -9,7 +9,6 @@ export default function PersonalBest (){
     return(
     <div>
         <NavigationBar />
-        {/* // need to figure out how to center it later */}
         <Card>
         <Display2 marginBottom="scale500" alignContent="center">{header}</Display2>
         <Table

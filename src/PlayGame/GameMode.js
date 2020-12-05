@@ -3,16 +3,13 @@ import NavigationBar from '../NavigationBar';
 import { Button } from "baseui/button";
 import { Card } from "baseui/card";
 import Routes from "../Route";
-import { Select, TYPE } from 'baseui/select';
+import { Select} from 'baseui/select';
 import { Notification, KIND } from "baseui/notification";
 import { H1 } from 'baseui/typography';
 import {UserContext} from "../UserContext";
 import './GameMode.css';
 import {
     Label1,
-    Label2,
-    Label3,
-    Label4,
     Paragraph1,
     Paragraph2,
     Paragraph3,
@@ -32,7 +29,6 @@ export default function Game() {
         }
       });
 
-    // const username = 
     const label = "Choose a game mode";
     const single = "Single Player Mode";
     const gameDescription = "There are two modes to the single player game: easy mode and hard mode. Easy mode has less problems and smaller multiplicands/multipliers. Hard mode has more problems and larger multiplicands/multipliers.";
@@ -62,8 +58,6 @@ export default function Game() {
                 )
             }
             <H1>{single}</H1>
-            <H1>{user.logged}</H1>
-            <H1>{user.name}</H1>
             <Paragraph1>{gameDescription}</Paragraph1>
             <Paragraph2>{gameDescription2}</Paragraph2>
             <Card>

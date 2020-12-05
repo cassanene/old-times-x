@@ -8,7 +8,6 @@ exports.problemSolver = function(grid) {
         answer = grid[i][0] * grid[i][1];
         answers.push(answer);
     }
-    console.log("answers",answers)
     return answers;
 }
 
