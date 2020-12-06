@@ -34,7 +34,7 @@ export default function Routes() {
         <Route path="/personalbests">
           <PersonalBest /> 
         </Route>
-        <Route path="/home" >
+        <Route path="/" >
           <Home />
         </Route> 
       </Switch>

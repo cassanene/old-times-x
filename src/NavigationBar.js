@@ -9,13 +9,11 @@ import {
 } from "baseui/app-nav-bar";
 import UserPrompt from "./Modal";
 import {UserContext} from "./UserContext";
-import {Game} from "./PlayGame/GameMode"
 
 const app = firebaseApp;
 const db = firebase.firestore(app);
-// export const UserContext = createContext();
 
-function NavigationBar(props) {
+function NavigationBar() {
 
   const userContext = React.useContext(UserContext);
 
@@ -24,7 +22,7 @@ function NavigationBar(props) {
   const [userData, setUserData] = useState({name: userContext.name, uid: userContext.uid, email: userContext.email});
   const [logged, setLogged] = useState(false);
   const [mainItems, setMainItems] = React.useState([
-    { label: "Home", info: { id: "/home"} },
+    { label: "Home", info: { id: "/"} },
     { label: 'Play Game', info: { id: "/game"} },
     { label: 'Leaderboard', info: { id: "/leaderboards" } },
     { label: "Login", info: { id: "login" } },
@@ -36,8 +34,8 @@ function NavigationBar(props) {
     var copy = [...mainItems];
     copy[3] = {label: user, info: {id: "login" }};
     setMainItems(copy);
-
-    if (!(userContext.logged) && user != "Login"){
+    if (user != "Login"){
+      console.log("this is the user", user);
       setLogged(true);
       userContext.setName(userData.name);
       userContext.setUID(userData.uid);
@@ -61,7 +59,6 @@ function NavigationBar(props) {
  
   user != "Login" && item.info.id == "login" ? setOpen(true) : item.info.id == "login" ? login() : window.location = item.info.id;
 
- 
   }
 
   function login() {
@@ -72,9 +69,12 @@ function NavigationBar(props) {
         name : result.user.displayName,
         email : result.user.email,
     }).then(async function() {
+      console.log(result.user.uid);
       var userInfo = await FirebaseData(result.user.uid);
+      console.log("this is the user data", userInfo);
       setUserData(userInfo);
       setUser(userInfo.name);
+
       userContext.setName(userData.name);
       userContext.setUID(userData.uid);
       userContext.setEmail(userData.email);
